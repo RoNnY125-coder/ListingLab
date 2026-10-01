@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #14100C;
+  --color-surface: #1D1712;
+  --color-surface-raised: #26201A;
+  --color-beige: #E8DCC8;
+  --color-beige-dim: #B8AC96;
+  --color-orange: #FF7A30;
+  --color-orange-dim: #C9601F;
+  --color-orange-glow: rgba(255, 122, 48, 0.35);
+  --color-outline: rgba(232, 220, 200, 0.10);
+  --color-outline-strong: rgba(232, 220, 200, 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    background-color: #14100C;
+    color: #E8DCC8;
+  }
+
+  body {
+    background-color: #14100C;
+    color: #E8DCC8;
+    font-family: var(--font-inter), sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #FF7A30;
+    color: #14100C;
+  }
+
+  img {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Custom scrollbar reset */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #14100C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #26201A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF7A30;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Lenis smooth scroll overrides */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
