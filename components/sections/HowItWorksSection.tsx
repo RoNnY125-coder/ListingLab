@@ -29,38 +29,38 @@ const pipelineSteps: PipelineStep[] = [
   {
     id: "ingest",
     num: "01",
-    tag: "RAW INGESTION",
-    title: "Bulk Photo Ingestion",
-    subtitle: "Upload smartphone captures, RAW DSLR rolls, or S3 cloud archives.",
+    tag: "UPLOAD",
+    title: "Photo Upload & Storage",
+    subtitle: "Upload smartphone or camera photos directly — JPEG, PNG, HEIC, WebP.",
     description:
-      "Automated EXIF analysis extracts camera sensor data, lens profiles, exposure parameters, and color temperature profiles.",
+      "Drop your product photo and it's securely uploaded to Cloudinary. We store the original under listinglab/originals, track its dimensions and file size, and queue it for transformation.",
   },
   {
     id: "calibrate",
     num: "02",
-    tag: "NEURAL SYNTHESIS",
-    title: "Neural Matting & Relighting",
-    subtitle: "Sub-pixel background isolation, edge refining, and 3D softbox raytracing.",
+    tag: "CLOUDINARY AI",
+    title: "Smart Crop & Optimization",
+    subtitle: "Automatic 1080×1080 smart crop with f_auto + q_auto compression.",
     description:
-      "Generative neural networks separate the core SKU object, synthesize soft ambient contact shadows, and polish specular highlights.",
+      "Cloudinary's gravity:auto engine detects the main subject and produces a perfectly centred square crop. f_auto picks the best format (WebP/AVIF) per browser, and q_auto trims file size without visible quality loss.",
   },
   {
     id: "compliance",
     num: "03",
-    tag: "RULE ENGINE",
-    title: "Marketplace Compliance Rules",
-    subtitle: "One-click adherence to strict Amazon, Shopify, eBay, and luxury specs.",
+    tag: "FORMATS",
+    title: "Multi-Format Delivery",
+    subtitle: "One upload → optimized square, portrait, landscape, and feed crops.",
     description:
-      "Enforces pure white background standards (RGB 255,255,255), 85% frame filling boundaries, and multi-ratio crop formats.",
+      "We generate six ready-to-use Cloudinary URLs: original, optimized (f_auto, q_auto), Instagram 1:1, Feed 4:5, Marketplace 3:4, and Banner 16:9. No re-uploading needed.",
   },
   {
     id: "deliver",
     num: "04",
-    tag: "CATALOG DEPLOYMENT",
-    title: "API Sync & Catalog Delivery",
-    subtitle: "Instant Webhook events, CDN links, and automated storefront publishing.",
+    tag: "ROADMAP",
+    title: "API Sync & Storefront Push",
+    subtitle: "Planned: Webhook events, CDN push, and automated storefront publishing.",
     description:
-      "Download high-res AVIF/WebP packages or trigger automatic sync directly into your Shopify catalog or ERP via developer API.",
+      "Coming soon — automatic sync to Shopify catalogs, webhook delivery on transform completion, and direct ERP integration. Today you can copy the Cloudinary URL or download the asset.",
   },
 ];
 
@@ -120,11 +120,6 @@ export const HowItWorksSection: React.FC = () => {
     }
   };
 
-
-  // Stage 2 Layer Toggle States
-  const [showAlphaMask, setShowAlphaMask] = useState<boolean>(true);
-  const [showContactShadow, setShowContactShadow] = useState<boolean>(true);
-  const [showRelighting, setShowRelighting] = useState<boolean>(true);
 
   // Stage 3 Platform Selector State
   const [selectedPlatform, setSelectedPlatform] = useState<"amazon" | "shopify" | "chrono24">(
@@ -317,27 +312,27 @@ export const HowItWorksSection: React.FC = () => {
                   </span>
                 </label>
 
-                {/* Simulated EXIF Telemetry Card */}
+                {/* Real Cloudinary Upload Metadata */}
                 <div className="bg-[#26201A] border border-[#E8DCC8]/10 rounded-xl p-2.5 font-mono text-xs flex flex-col gap-1">
                   <span className="text-[8px] text-[#FF7A30] uppercase block">
-                    CAMERA EXIF TELEMETRY DETECTED
+                    CLOUDINARY UPLOAD RESULT
                   </span>
                   <div className="grid grid-cols-2 gap-1.5 text-[#B8AC96] text-[10px]">
                     <div>
-                      <span>Sensor: </span>
-                      <strong className="text-[#E8DCC8]">{uploadMetadata?.cameraModel || "Full Frame CMOS"}</strong>
+                      <span>Width: </span>
+                      <strong className="text-[#E8DCC8]">{uploadMetadata?.width ? `${uploadMetadata.width}px` : "—"}</strong>
                     </div>
                     <div>
-                      <span>Lens: </span>
-                      <strong className="text-[#E8DCC8]">{uploadMetadata?.lens || "50mm f/1.8 Prime"}</strong>
+                      <span>Height: </span>
+                      <strong className="text-[#E8DCC8]">{uploadMetadata?.height ? `${uploadMetadata.height}px` : "—"}</strong>
                     </div>
                     <div>
-                      <span>Resolution: </span>
-                      <strong className="text-[#E8DCC8]">{uploadMetadata?.resolution || "6000 x 4000"}</strong>
+                      <span>Format: </span>
+                      <strong className="text-[#FF7A30]">{uploadMetadata?.format?.toUpperCase() || "—"}</strong>
                     </div>
                     <div>
-                      <span>File Format: </span>
-                      <strong className="text-[#FF7A30]">{uploadMetadata?.format || "CR3 RAW"} ({uploadMetadata?.bytes ? (uploadMetadata.bytes / 1024 / 1024).toFixed(1) : "42.8"}MB)</strong>
+                      <span>Size: </span>
+                      <strong className="text-[#E8DCC8]">{uploadMetadata?.bytes ? `${(uploadMetadata.bytes / 1024).toFixed(0)} KB` : "—"}</strong>
                     </div>
                   </div>
                 </div>
@@ -369,110 +364,80 @@ export const HowItWorksSection: React.FC = () => {
             </div>
           )}
 
-          {/* STAGE 02: NEURAL CALIBRATION */}
+          {/* STAGE 02: CLOUDINARY OPTIMIZATION */}
           {activeStepIdx === 1 && (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
               <div className="lg:col-span-5 flex flex-col gap-3.5">
                 <div>
                   <h4 className="font-headline text-sm font-bold text-[#E8DCC8] mb-1">
-                    Neural Matting & Layer Segmentation
+                    Smart Crop & Format Optimization
                   </h4>
                   <p className="text-xs text-[#B8AC96] leading-relaxed">
-                    Toggle individual neural processing layers below to inspect how ListingLab builds studio depth.
+                    {processedUrls
+                      ? "Your image has been processed. Below are the real Cloudinary transformation settings applied."
+                      : "Upload a photo in Stage 01 to see real transformation results here."}
                   </p>
                 </div>
 
-                {/* Layer Control Toggles */}
+                {/* Real Transform Info */}
                 <div className="flex flex-col gap-1.5 font-mono text-[10px]">
-                  <div
-                    onClick={() => setShowAlphaMask(!showAlphaMask)}
-                    className={`p-2.5 rounded-lg border cursor-pointer transition-colors flex items-center justify-between ${
-                      showAlphaMask
-                        ? "bg-[#26201A] border-[#FF7A30] text-[#FF7A30]"
-                        : "bg-[#14100C] border-[#E8DCC8]/15 text-[#B8AC96]"
-                    }`}
-                  >
+                  <div className={`p-2.5 rounded-lg border flex items-center justify-between bg-[#26201A] border-[#FF7A30] text-[#FF7A30]`}>
                     <div className="flex items-center gap-2">
                       <Eye className="w-3 h-3" />
-                      <span>Layer 1: Sub-Pixel Alpha Matting Mask</span>
+                      <span>c_fill, g_auto, w_1080, h_1080</span>
                     </div>
-                    <span className="text-[8px] px-1.5 py-0.2 rounded bg-[#14100C]">
-                      {showAlphaMask ? "ON" : "OFF"}
-                    </span>
+                    <span className="text-[8px] px-1.5 py-0.2 rounded bg-[#14100C]">APPLIED</span>
                   </div>
 
-                  <div
-                    onClick={() => setShowContactShadow(!showContactShadow)}
-                    className={`p-2.5 rounded-lg border cursor-pointer transition-colors flex items-center justify-between ${
-                      showContactShadow
-                        ? "bg-[#26201A] border-[#FF7A30] text-[#FF7A30]"
-                        : "bg-[#14100C] border-[#E8DCC8]/15 text-[#B8AC96]"
-                    }`}
-                  >
+                  <div className={`p-2.5 rounded-lg border flex items-center justify-between bg-[#26201A] border-[#FF7A30] text-[#FF7A30]`}>
                     <div className="flex items-center gap-2">
                       <Cpu className="w-3 h-3" />
-                      <span>Layer 2: Ground Contact Shadow Synthesis</span>
+                      <span>f_auto — best format per browser</span>
                     </div>
-                    <span className="text-[8px] px-1.5 py-0.2 rounded bg-[#14100C]">
-                      {showContactShadow ? "ON" : "OFF"}
-                    </span>
+                    <span className="text-[8px] px-1.5 py-0.2 rounded bg-[#14100C]">APPLIED</span>
                   </div>
 
-                  <div
-                    onClick={() => setShowRelighting(!showRelighting)}
-                    className={`p-2.5 rounded-lg border cursor-pointer transition-colors flex items-center justify-between ${
-                      showRelighting
-                        ? "bg-[#26201A] border-[#FF7A30] text-[#FF7A30]"
-                        : "bg-[#14100C] border-[#E8DCC8]/15 text-[#B8AC96]"
-                    }`}
-                  >
+                  <div className={`p-2.5 rounded-lg border flex items-center justify-between bg-[#26201A] border-[#FF7A30] text-[#FF7A30]`}>
                     <div className="flex items-center gap-2">
                       <Cpu className="w-3 h-3" />
-                      <span>Layer 3: Studio Softbox Rim Relighting</span>
+                      <span>q_auto — optimal quality/size ratio</span>
                     </div>
-                    <span className="text-[8px] px-1.5 py-0.2 rounded bg-[#14100C]">
-                      {showRelighting ? "ON" : "OFF"}
-                    </span>
+                    <span className="text-[8px] px-1.5 py-0.2 rounded bg-[#14100C]">APPLIED</span>
                   </div>
                 </div>
 
                 <div className="bg-[#26201A] p-2.5 rounded-xl border border-[#E8DCC8]/10 flex items-center justify-between font-mono text-[10px]">
-                  <span className="text-[#B8AC96]">Neural Edge Confidence</span>
-                  <span className="text-[#FF7A30] font-bold">99.82% Confidence</span>
+                  <span className="text-[#B8AC96]">Size Reduction</span>
+                  <span className="text-[#FF7A30] font-bold">
+                    {sizeSavedPct > 0 ? `${sizeSavedPct}% smaller` : processedUrls ? "Calculating…" : "Upload first →"}
+                  </span>
                 </div>
               </div>
 
-              {/* Stage 2 Right: Layered Output Viewport */}
+              {/* Stage 2 Right: Optimized Output Viewport */}
               <div className="lg:col-span-7">
                 <div className="bg-[#14100C] border border-[#E8DCC8]/15 rounded-xl p-3.5 shadow-2xl relative">
                   <div className="flex items-center justify-between pb-1.5 text-[10px] font-mono text-[#B8AC96] border-b border-[#E8DCC8]/10 mb-2.5">
-                    <span>LAYER COMPOSITOR VIEWPORT</span>
-                    <span className="text-[#FF7A30]">CALIBRATED</span>
+                    <span>CLOUDINARY OPTIMIZED OUTPUT</span>
+                    <span className="text-[#FF7A30]">{processedUrls ? "READY" : "AWAITING UPLOAD"}</span>
                   </div>
 
-                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-white flex items-center justify-center p-3">
-                    {/* Optional Alpha Mask Wireframe indicator */}
-                    {showAlphaMask && (
-                      <div className="absolute inset-0 border-2 border-dashed border-[#FF7A30] m-2.5 pointer-events-none rounded-lg z-20 opacity-70">
-                        <span className="absolute top-1.5 left-1.5 bg-[#FF7A30] text-[#14100C] font-mono text-[8px] px-1 py-0.2 font-bold rounded">
-                          SUB-PIXEL ALPHA CONTOUR
-                        </span>
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-[#26201A] flex items-center justify-center p-3">
+                    {processedUrls ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img src={processedUrls?.optimized} alt="Cloudinary Optimized Output" className="w-full h-full object-contain relative z-10 transition-all" />
+                    ) : (
+                      <div className="flex flex-col items-center gap-2 text-[#B8AC96] font-mono text-xs">
+                        <UploadCloud className="w-8 h-8 opacity-30" />
+                        <span className="text-[10px]">Upload a photo in Stage 01 first</span>
                       </div>
                     )}
-
-                    {/* Contact Shadow Simulation Layer */}
-                    {showContactShadow && (
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/4 h-6 rounded-full bg-black/40 blur-lg pointer-events-none" />
-                    )}
-
-                    {/* Processed Studio Image */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={processedUrls?.optimized || rawImageUrl} alt="Calibrated Studio Output" className={`w-full h-full object-contain relative z-10 transition-all ${showRelighting ? "brightness-105 contrast-105" : ""}`} />
                   </div>
                 </div>
               </div>
             </div>
           )}
+
 
           {/* STAGE 03: MARKETPLACE COMPLIANCE */}
           {activeStepIdx === 2 && (

@@ -71,11 +71,11 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
     >
-      {/* Background Studio Base (After - Clean Outdoor Staged Studio) */}
+      {/* Background Studio Base (After — Cloudinary optimized) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/trailblazer.jpg"
+          src="https://res.cloudinary.com/demo/image/upload/c_fill,g_auto,w_1920,h_1080,f_auto,q_auto/docs/models.jpg"
           alt="Studio Staged Output"
           className="absolute right-0 top-0 h-full w-[200%] max-w-none object-cover object-right"
         />
@@ -84,12 +84,12 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
         {/* After Label - Clean Non-Pill Rectangular Badge */}
         <div className="absolute top-8 right-8 z-30 pointer-events-none">
           <span className="px-3.5 py-1.5 bg-[#14100C]/85 backdrop-blur-md border border-[#FF7A30]/40 text-[#FF7A30] text-xs font-mono tracking-wider">
-            STUDIO GRADE • CLEAN
+            AFTER — f_auto, q_auto, c_fill
           </span>
         </div>
       </div>
 
-      {/* Clipped Overlay (Before - Raw Muddy Field Capture) */}
+      {/* Clipped Overlay (Before — original upload) */}
       <div
         ref={wipeClipRef}
         className="absolute inset-0 h-full overflow-hidden bg-[#14100C]"
@@ -98,8 +98,8 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
         <div className="relative w-screen h-screen overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/trailblazer.jpg"
-            alt="Original Muddy Capture"
+            src="https://res.cloudinary.com/demo/image/upload/docs/models.jpg"
+            alt="Original Upload"
             className="absolute left-0 top-0 h-full w-[200%] max-w-none object-cover object-left"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#14100C]/70 via-transparent to-[#14100C]/40 pointer-events-none" />
@@ -107,7 +107,7 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
           {/* Raw Label - Clean Non-Pill Rectangular Badge */}
           <div className="absolute top-8 left-8 z-30 pointer-events-none">
             <span className="px-3.5 py-1.5 bg-[#14100C]/85 backdrop-blur-md border border-[#E8DCC8]/20 text-[#B8AC96] text-xs font-mono tracking-wider">
-              RAW CAPTURE • MUDDY
+              BEFORE — Original Upload
             </span>
           </div>
         </div>
