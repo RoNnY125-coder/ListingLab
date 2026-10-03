@@ -386,7 +386,7 @@ export const FeaturesSection: React.FC = () => {
                     {/* Product Image preview */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/trailblazer.jpg"
+                      src="/images/shoe.jpg"
                       alt="Sample SKU Preview"
                       className="w-full h-full object-contain relative z-10 filter drop-shadow-lg"
                     />
@@ -418,3 +418,4 @@ export const FeaturesSection: React.FC = () => {
     </section>
   );
 };
+

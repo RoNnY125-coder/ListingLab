@@ -72,7 +72,7 @@ export const HowItWorksSection: React.FC = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [uploadedImageId, setUploadedImageId] = useState<string | null>(null);
   const [processedUrls, setProcessedUrls] = useState<any>(null);
-  const [rawImageUrl, setRawImageUrl] = useState<string>("/images/trailblazer.jpg");
+  const [rawImageUrl, setRawImageUrl] = useState<string>("/images/shoe.jpg");
 
   const [sizeSavedPct, setSizeSavedPct] = useState<number>(0);
   const [uploadMetadata, setUploadMetadata] = useState<any>(null);
@@ -658,3 +658,4 @@ export const HowItWorksSection: React.FC = () => {
     </section>
   );
 };
+

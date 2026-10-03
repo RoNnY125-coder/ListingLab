@@ -11,7 +11,7 @@ export const galleryCards = [
     title: "Streetwear & Footwear",
     badge: "Shopify Ready",
     useCustomCrop: true,
-    imgSrc: "/images/trailblazer.jpg",
+    imgSrc: "/images/shoe.jpg",
     beforeTag: "Muddy Trail RAW",
     afterTag: "Studio Staged",
     chips: ["Smart Alpha Mask", "AI Pedestal Gen", "q_auto:95"],
@@ -273,3 +273,4 @@ export const ScrollGallery: React.FC = () => {
     </section>
   );
 };
+
