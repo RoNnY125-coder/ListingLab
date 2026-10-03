@@ -16,7 +16,7 @@ from app.services import cloudinary_service
 
 
 # Maximum time (seconds) to wait for Cloudinary HEAD response
-_HEAD_TIMEOUT = 10.0
+_HEAD_TIMEOUT = 60.0
 
 
 def get_all_urls(public_id: str) -> ImageUrls:

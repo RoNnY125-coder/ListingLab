@@ -27,3 +27,7 @@ class UploadResponse(BaseModel):
     height: int
     tags: List[str] = []
     moderation: Optional[ModerationInfo] = None
+    cameraModel: Optional[str] = None
+    lens: Optional[str] = None
+    format: Optional[str] = None
+    resolution: Optional[str] = None

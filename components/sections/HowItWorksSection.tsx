@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  UploadCloud,
+  UploadCloud, Loader2,
   Cpu,
   CheckCircle2,
   ChevronRight,
@@ -68,6 +68,58 @@ export const HowItWorksSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeStepIdx, setActiveStepIdx] = useState<number>(0);
   const [copiedCode, setCopiedCode] = useState<boolean>(false);
+
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [uploadedImageId, setUploadedImageId] = useState<string | null>(null);
+  const [processedUrls, setProcessedUrls] = useState<any>(null);
+  const [rawImageUrl, setRawImageUrl] = useState<string>("/images/trailblazer.jpg");
+
+  const [sizeSavedPct, setSizeSavedPct] = useState<number>(0);
+  const [uploadMetadata, setUploadMetadata] = useState<any>(null);
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const objectUrl = URL.createObjectURL(file);
+    setRawImageUrl(objectUrl);
+    setUploadedImageId(null);
+    setProcessedUrls(null);
+    setIsUploading(true);
+    setUploadMetadata(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const uploadRes = await fetch("http://localhost:8000/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const uploadData = await uploadRes.json();
+
+      if (!uploadRes.ok) throw new Error(uploadData.detail || "Upload failed");
+
+      setUploadedImageId(uploadData.publicId);
+      setUploadMetadata(uploadData);
+
+      const processRes = await fetch(`http://localhost:8000/api/process?publicId=${uploadData.publicId}`);
+      const processData = await processRes.json();
+
+      if (!processRes.ok) throw new Error(processData.detail || "Process failed");
+
+      setProcessedUrls(processData.urls);
+      setSizeSavedPct(processData.sizeSavedPct ?? 0);
+      // Auto-advance to Stage 02 to show real results
+      setActiveStepIdx(1);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to upload and process image. Make sure the backend is running and Cloudinary credentials are configured in .env");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
 
   // Stage 2 Layer Toggle States
   const [showAlphaMask, setShowAlphaMask] = useState<boolean>(true);
@@ -181,6 +233,24 @@ export const HowItWorksSection: React.FC = () => {
 
         {/* Stage Interactive Viewport Container */}
         <div className="bg-[#1D1712] border border-[#E8DCC8]/15 rounded-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+
+          {/* Live Processing Status Banner */}
+          {isUploading && (
+            <div className="mb-4 p-2.5 rounded-xl bg-[#FF7A30]/10 border border-[#FF7A30]/40 flex items-center gap-2 font-mono text-[10px] text-[#FF7A30]">
+              <Loader2 className="w-3.5 h-3.5 animate-spin flex-shrink-0" />
+              <span>Uploading to Cloudinary and running neural processing pipeline... please wait</span>
+            </div>
+          )}
+          {!isUploading && processedUrls && (
+            <div className="mb-4 p-2.5 rounded-xl bg-green-500/10 border border-green-500/40 flex items-center justify-between gap-2 font-mono text-[10px] text-green-400">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
+                Pipeline complete — all 4 stages ready with your image
+              </span>
+              {sizeSavedPct > 0 && <span className="text-green-300 font-semibold">{sizeSavedPct}% size saved</span>}
+            </div>
+          )}
+
           {/* Top Bar for Viewport */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#E8DCC8]/10 mb-4 gap-2">
             <div className="flex items-center gap-2.5">
@@ -233,18 +303,19 @@ export const HowItWorksSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Dropzone Simulation Box */}
-                <div className="border border-dashed border-[#FF7A30]/40 rounded-xl p-3 bg-[#14100C]/60 flex flex-col items-center text-center group hover:border-[#FF7A30] transition-colors">
+                {/* Interactive Dropzone */}
+                <label className="border border-dashed border-[#FF7A30]/40 rounded-xl p-3 bg-[#14100C]/60 flex flex-col items-center text-center group hover:border-[#FF7A30] transition-colors cursor-pointer relative overflow-hidden">
+                  <input type="file" accept="image/*" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
                   <div className="w-8 h-8 bg-[#26201A] text-[#FF7A30] flex items-center justify-center mb-1.5 border border-[#E8DCC8]/10 group-hover:scale-105 transition-transform">
-                    <UploadCloud className="w-4 h-4" />
+                    {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <UploadCloud className="w-4 h-4" />}
                   </div>
                   <span className="font-headline text-xs font-semibold text-[#E8DCC8]">
-                    Drop RAW / HEIC / JPG Batch Here
+                    {isUploading ? "Uploading & Processing..." : "Click to Upload Photo"}
                   </span>
                   <span className="font-mono text-[9px] text-[#B8AC96] mt-0.5">
-                    Supports up to 5,000 SKUs per upload session
+                    Supports up to 10MB (JPEG, PNG, HEIC, WebP)
                   </span>
-                </div>
+                </label>
 
                 {/* Simulated EXIF Telemetry Card */}
                 <div className="bg-[#26201A] border border-[#E8DCC8]/10 rounded-xl p-2.5 font-mono text-xs flex flex-col gap-1">
@@ -254,19 +325,19 @@ export const HowItWorksSection: React.FC = () => {
                   <div className="grid grid-cols-2 gap-1.5 text-[#B8AC96] text-[10px]">
                     <div>
                       <span>Sensor: </span>
-                      <strong className="text-[#E8DCC8]">Full Frame CMOS</strong>
+                      <strong className="text-[#E8DCC8]">{uploadMetadata?.cameraModel || "Full Frame CMOS"}</strong>
                     </div>
                     <div>
                       <span>Lens: </span>
-                      <strong className="text-[#E8DCC8]">50mm f/1.8 Prime</strong>
+                      <strong className="text-[#E8DCC8]">{uploadMetadata?.lens || "50mm f/1.8 Prime"}</strong>
                     </div>
                     <div>
                       <span>Resolution: </span>
-                      <strong className="text-[#E8DCC8]">6000 x 4000 (24MP)</strong>
+                      <strong className="text-[#E8DCC8]">{uploadMetadata?.resolution || "6000 x 4000"}</strong>
                     </div>
                     <div>
                       <span>File Format: </span>
-                      <strong className="text-[#FF7A30]">CR3 RAW (42.8MB)</strong>
+                      <strong className="text-[#FF7A30]">{uploadMetadata?.format || "CR3 RAW"} ({uploadMetadata?.bytes ? (uploadMetadata.bytes / 1024 / 1024).toFixed(1) : "42.8"}MB)</strong>
                     </div>
                   </div>
                 </div>
@@ -282,11 +353,7 @@ export const HowItWorksSection: React.FC = () => {
 
                   <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-black">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/trailblazer.jpg"
-                      alt="Raw Input Capture"
-                      className="absolute left-0 top-0 h-full w-[200%] max-w-none object-cover object-left filter brightness-95"
-                    />
+                    <img src={rawImageUrl} alt="Raw Input Capture" className="absolute left-0 top-0 h-full w-full object-cover filter brightness-95" />
 
                     {/* Scan Line Animation Effect */}
                     <div className="absolute inset-0 bg-gradient-to-b from-[#FF7A30]/20 via-transparent to-transparent h-8 w-full animate-pulse border-b border-[#FF7A30]" />
@@ -400,13 +467,7 @@ export const HowItWorksSection: React.FC = () => {
 
                     {/* Processed Studio Image */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/trailblazer.jpg"
-                      alt="Calibrated Studio Output"
-                      className={`w-full h-full object-contain relative z-10 transition-all ${
-                        showRelighting ? "brightness-105 contrast-105" : ""
-                      }`}
-                    />
+                    <img src={processedUrls?.optimized || rawImageUrl} alt="Calibrated Studio Output" className={`w-full h-full object-contain relative z-10 transition-all ${showRelighting ? "brightness-105 contrast-105" : ""}`} />
                   </div>
                 </div>
               </div>
@@ -525,11 +586,7 @@ export const HowItWorksSection: React.FC = () => {
                     </div>
 
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/trailblazer.jpg"
-                      alt="Marketplace Compliant Product"
-                      className="w-4/5 h-4/5 object-contain relative z-10"
-                    />
+                    <img src={selectedPlatform === "amazon" ? (processedUrls?.marketplace || rawImageUrl) : selectedPlatform === "shopify" ? (processedUrls?.feed || rawImageUrl) : (processedUrls?.instagram || rawImageUrl)} alt="Marketplace Compliant Product" className="w-4/5 h-4/5 object-contain relative z-10" />
                   </div>
                 </div>
               </div>
@@ -565,13 +622,16 @@ export const HowItWorksSection: React.FC = () => {
                     </button>
                   </div>
 
-                  <pre className="text-[9px] text-[#E8DCC8] overflow-x-auto leading-relaxed">
-{`{
-  "status": "published",
-  "sku": "SKU-9921",
-  "compliance": { "amazon_white": true, "delta_e": 0.12 },
-  "cdn_urls": { "avif_4k": "https://cdn.listinglab.io/skus/9921.avif" }
-}`}
+                  <pre className="text-[9px] text-[#E8DCC8] overflow-x-auto leading-relaxed whitespace-pre-wrap">
+{JSON.stringify({
+  status: "published",
+  publicId: uploadedImageId || "sample-id",
+  urls: processedUrls || {
+    original: "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    optimized: "https://res.cloudinary.com/demo/image/upload/f_auto,q_auto/sample",
+    marketplace: "https://res.cloudinary.com/demo/image/upload/w_2000,h_2000,c_pad,b_white/sample",
+  },
+}, null, 2)}
                   </pre>
                 </div>
 
@@ -603,10 +663,10 @@ export const HowItWorksSection: React.FC = () => {
                         118 KB • RGB 255 Verified
                       </span>
                     </div>
-                    <button className="px-2 py-1 rounded bg-[#FF7A30] text-[#14100C] font-mono text-[9px] font-semibold flex items-center gap-1 transition-all">
+                    <a href={processedUrls?.marketplace || "#"} download target="_blank" rel="noreferrer" className="px-2 py-1 rounded bg-[#FF7A30] text-[#14100C] font-mono text-[9px] font-semibold flex items-center gap-1 transition-all">
                       <Download className="w-3 h-3" />
                       <span>Download</span>
-                    </button>
+                    </a>
                   </div>
 
                   {/* Asset Format 2 */}
@@ -619,10 +679,10 @@ export const HowItWorksSection: React.FC = () => {
                         380 KB • Sub-Pixel Alpha
                       </span>
                     </div>
-                    <button className="px-2 py-1 rounded bg-[#26201A] text-[#E8DCC8] border border-[#E8DCC8]/15 font-mono text-[9px] flex items-center gap-1 transition-all">
+                    <a href={processedUrls?.optimized || "#"} download target="_blank" rel="noreferrer" className="px-2 py-1 rounded bg-[#26201A] text-[#E8DCC8] border border-[#E8DCC8]/15 font-mono text-[9px] flex items-center gap-1 transition-all">
                       <Download className="w-3 h-3 text-[#FF7A30]" />
                       <span>Download</span>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

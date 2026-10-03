@@ -17,10 +17,8 @@ def register_exception_handlers(app: FastAPI) -> None:
     async def listinglab_exception_handler(
         request: Request, exc: ListingLabException
     ) -> JSONResponse:
-        """
-        Catch every custom ListingLab exception and return a clean JSON body:
-        { "error": "ERROR_CODE", "message": "Human readable description." }
-        """
+        import traceback
+        print(f"ListingLabException: {exc.error_code} - {exc.message}")
         return JSONResponse(
             status_code=exc.status_code,
             content={
@@ -37,10 +35,12 @@ def register_exception_handlers(app: FastAPI) -> None:
         Catch-all for unexpected errors.
         Returns 500 without exposing the internal error details.
         """
+        import traceback
+        traceback.print_exc()
         return JSONResponse(
             status_code=500,
             content={
                 "error": "INTERNAL_ERROR",
-                "message": "An unexpected error occurred. Please try again.",
+                "message": f"An unexpected error occurred: {str(exc)}",
             },
         )

@@ -18,7 +18,7 @@ from app.services import cloudinary_service
 router = APIRouter(tags=["upload"])
 
 # ── Limits ─────────────────────────────────────────────────────────────────────
-_MAX_SIZE_BYTES = 20 * 1024 * 1024          # 20 MB
+_MAX_SIZE_BYTES = 10 * 1024 * 1024          # 10 MB
 _ALLOWED_MIME_PREFIXES = ("image/",)
 
 
@@ -80,7 +80,12 @@ async def upload_image(file: UploadFile = File(...)) -> UploadResponse:
 
     # Extract tags (may come from auto-tagging add-on)
     tags = result.get("tags") or []
-
+    
+    # Extract EXIF metadata if available
+    img_meta = result.get("image_metadata", {})
+    camera_model = img_meta.get("Model") or img_meta.get("Make") or "Unknown Camera"
+    lens = img_meta.get("LensModel") or img_meta.get("Lens") or "Unknown Lens"
+    
     return UploadResponse(
         publicId=result["public_id"],
         bytes=result.get("bytes", len(file_bytes)),
@@ -88,4 +93,8 @@ async def upload_image(file: UploadFile = File(...)) -> UploadResponse:
         height=result.get("height", 0),
         tags=tags,
         moderation=moderation_info,
+        cameraModel=camera_model,
+        lens=lens,
+        format=result.get("format", "unknown").upper(),
+        resolution=f"{result.get('width', 0)} x {result.get('height', 0)}"
     )

@@ -52,6 +52,7 @@ def upload_image(file_bytes: bytes, filename: str) -> Dict[str, Any]:
         "use_filename": True,
         "unique_filename": True,
         "overwrite": False,
+        "image_metadata": True,
     }
 
     # Attempt with add-ons first
@@ -92,9 +93,16 @@ def generate_original_url(public_id: str) -> str:
 
 
 def generate_optimized_url(public_id: str) -> str:
-    """Return a URL with automatic format and quality optimisation (f_auto, q_auto)."""
+    """Return a URL with AI generative background replacement to simulate a studio shot and enhance the object."""
     return cloudinary.utils.cloudinary_url(
         public_id,
+        transformation=[
+            # First, radically improve lighting, contrast, and restore object quality
+            {"effect": "improve"},
+            {"effect": "enhance"},
+            # Then, replace the background with a clean studio environment
+            {"effect": "gen_background_replace:prompt_minimalist bright professional studio lighting backdrop"}
+        ],
         fetch_format="auto",
         quality="auto",
         secure=True,
@@ -104,14 +112,14 @@ def generate_optimized_url(public_id: str) -> str:
 def generate_instagram_url(public_id: str) -> str:
     """
     1080×1080 square crop — Instagram post format (1:1).
-    crop=fill, gravity=auto keeps the main subject centred.
+    crop=fill, gravity=auto:subject keeps the main subject perfectly centred.
     """
     return cloudinary.utils.cloudinary_url(
         public_id,
         width=1080,
         height=1080,
         crop="fill",
-        gravity="auto",
+        gravity="auto:subject",
         fetch_format="auto",
         quality="auto",
         secure=True,
@@ -127,7 +135,7 @@ def generate_feed_url(public_id: str) -> str:
         width=1080,
         height=1350,
         crop="fill",
-        gravity="auto",
+        gravity="auto:subject",
         fetch_format="auto",
         quality="auto",
         secure=True,
@@ -137,13 +145,14 @@ def generate_feed_url(public_id: str) -> str:
 def generate_marketplace_url(public_id: str) -> str:
     """
     900×1200 portrait crop — standard marketplace listing format (3:4).
+    Uses pad to ensure no part of the object is cropped out.
     """
     return cloudinary.utils.cloudinary_url(
         public_id,
         width=900,
         height=1200,
-        crop="fill",
-        gravity="auto",
+        crop="pad",
+        background="white",
         fetch_format="auto",
         quality="auto",
         secure=True,
