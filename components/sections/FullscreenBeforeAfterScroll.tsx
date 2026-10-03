@@ -75,7 +75,7 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://res.cloudinary.com/demo/image/upload/c_fill,g_auto,w_1920,h_1080,f_auto,q_auto/docs/models.jpg"
+          src="https://res.cloudinary.com/demo/image/fetch/c_fill,g_auto,w_1920,h_1080,f_auto,q_auto/https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1"
           alt="Studio Staged Output"
           className="absolute right-0 top-0 h-full w-[200%] max-w-none object-cover object-right"
         />
@@ -98,7 +98,7 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
         <div className="relative w-screen h-screen overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://res.cloudinary.com/demo/image/upload/docs/models.jpg"
+            src="/images/mall.jpg"
             alt="Original Upload"
             className="absolute left-0 top-0 h-full w-[200%] max-w-none object-cover object-left"
           />
