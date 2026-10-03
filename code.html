@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-primary-container":"#dad7ff","surface-tint":"#c3c0ff","on-secondary-container":"#c9aeff","tertiary":"#7bd0ff","on-primary-fixed":"#0f0069","background":"#051424","on-secondary-fixed-variant":"#5a00c6","surface-container":"#122131","secondary":"#d2bbff","on-secondary-fixed":"#25005a","inverse-surface":"#d4e4fa","on-tertiary-container":"#b2e1ff","secondary-fixed":"#eaddff","on-tertiary":"#00354a","tertiary-container":"#00678c","surface-container-lowest":"#010f1f","primary":"#c3c0ff","outline-variant":"#464555","error":"#ffb4ab","on-surface":"#d4e4fa","surface-bright":"#2c3a4c","on-error":"#690005","surface-variant":"#273647","outline":"#918fa1","tertiary-fixed-dim":"#7bd0ff","surface":"#051424","primary-fixed-dim":"#c3c0ff","secondary-container":"#6001d1","tertiary-fixed":"#c4e7ff","surface-container-high":"#1c2b3c","inverse-primary":"#4d44e3","on-surface-variant":"#c7c4d8","primary-container":"#4f46e5","secondary-fixed-dim":"#d2bbff","surface-container-low":"#0d1c2d","inverse-on-surface":"#233143","surface-dim":"#051424","on-secondary":"#3f008e","on-tertiary-fixed":"#001e2c","on-primary":"#1d00a5","on-tertiary-fixed-variant":"#004c69","surface-container-highest":"#273647","on-primary-fixed-variant":"#3323cc","primary-fixed":"#e2dfff","on-background":"#d4e4fa","error-container":"#93000a","on-error-container":"#ffdad6"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-sm":"1rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem","gutter":"1.5rem","space-xs":"0.25rem","space-xl":"2.5rem","margin":"3rem","margin-sm":"1.25rem"},"fontFamily":{"headline-lg-mobile":["Space Grotesk"],"display-hero-mobile":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-lg":["Inter"],"headline-lg":["Space Grotesk"],"body-md":["Inter"],"label-code":["JetBrains Mono"],"label-caps":["Inter"],"display-hero":["Space Grotesk"],"headline-sm":["Space Grotesk"],"body-sm":["Inter"]},"fontSize":{"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-hero-mobile":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.03em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"label-code":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"label-caps":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"600"}],"display-hero":["64px",{"lineHeight":"72px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/80 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-16 w-full px-gutter-sm lg:px-margin max-w-[1440px] mx-auto flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-sm" data-path="landing" href="#"><img alt="ListingLab Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VrXp8r7GMY-yt12MvkDZDZJc1uWtJfqlKrgQtXB0Aq2AEqCyRnnPk1y65AZGeohX6rj0sMTj54bmNMB28Y-quDZ8uurakUz3OdoV5eeu1JMYUg6991lynQTvVT78FrV2wCY2aYVrXC-AWcoN2F6b0vHq1q_kJPrfMuyu1xi3BwTvjmmVCdfllJf4zVZqidllkmD0j3cBS9hMKvIOc3qNLSvG4SKQlVoyKDA2PhJtuWrwY4PFpCr_SyP-M"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold">ListingLab</span></a></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-medium"><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="features" href="#">Features</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase" href="#">Showcase</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it Works</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="pricing" href="#">Pricing</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="documentation" href="#">Docs</a></nav><div class="flex items-center gap-space-md shrink-0"><a class="hidden sm:inline-flex items-center font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-space-sm py-space-xs" data-path="login" href="#">Sign In</a><a class="relative inline-flex items-center justify-center px-space-md py-space-xs rounded-lg font-body-md text-body-md font-medium text-white bg-gradient-to-r from-primary-container to-secondary-container shadow-[0_0_20px_rgba(124,58,237,0.35)] hover:shadow-[0_0_28px_rgba(124,58,237,0.6)] transition-all duration-200 active:scale-95" data-path="signup" href="#"><span>Start Free Trial</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-background"><div class="flex flex-col w-full text-on-surface">
+<!-- HERO SECTION -->
+<section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden px-gutter-sm lg:px-margin pt-16 pb-24">
+<!-- Embedded 3D Glowing Particle Scene -->
+<!-- STITCH_THREEJS_START:ANIMATION_2 class="absolute inset-0 w-full h-full bg-transparent pointer-events-none z-0" -->
+<div class="absolute inset-0 w-full h-full bg-transparent pointer-events-none z-0" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_2');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+camera.position.z = 24;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Create central glowing particle structure & wireframe nodes
+const group = new THREE.Group();
+scene.add(group);
+
+// Outer floating particle cloud
+const particlesCount = 850;
+const positions = new Float32Array(particlesCount * 3);
+const colors = new Float32Array(particlesCount * 3);
+
+const colorPrimary = new THREE.Color(0x4f46e5); // Indigo
+const colorViolet = new THREE.Color(0x7c3aed);  // Violet
+const colorCyan = new THREE.Color(0x38bdf8);    // Cyan highlight
+
+for (let i = 0; i < particlesCount; i++) {
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.acos((Math.random() * 2) - 1);
+  const radius = 7.5 + (Math.random() - 0.5) * 5.5;
+
+  positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+  positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+  positions[i * 3 + 2] = radius * Math.cos(phi);
+
+  const mixedColor = Math.random() > 0.6 ? colorViolet : (Math.random() > 0.3 ? colorPrimary : colorCyan);
+  colors[i * 3] = mixedColor.r;
+  colors[i * 3 + 1] = mixedColor.g;
+  colors[i * 3 + 2] = mixedColor.b;
+}
+
+const particleGeo = new THREE.BufferGeometry();
+particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+const particleMat = new THREE.PointsMaterial({
+  size: 0.14,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.85,
+  blending: THREE.AdditiveBlending
+});
+
+const particleSystem = new THREE.Points(particleGeo, particleMat);
+group.add(particleSystem);
+
+// Geometric luminous wireframe core (Icosahedron & Rings representing AI camera focus / scanning)
+const innerGeo = new THREE.IcosahedronGeometry(5.2, 2);
+const innerWireMat = new THREE.MeshBasicMaterial({
+  color: 0x6366f1,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.22,
+  blending: THREE.AdditiveBlending
+});
+const innerMesh = new THREE.Mesh(innerGeo, innerWireMat);
+group.add(innerMesh);
+
+// Glowing orbital scanner rings
+const ringGeo1 = new THREE.TorusGeometry(8.5, 0.04, 16, 100);
+const ringMat1 = new THREE.MeshBasicMaterial({
+  color: 0x818cf8,
+  transparent: true,
+  opacity: 0.45,
+  blending: THREE.AdditiveBlending
+});
+const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
+ring1.rotation.x = Math.PI / 3;
+group.add(ring1);
+
+const ringGeo2 = new THREE.TorusGeometry(9.8, 0.03, 16, 100);
+const ringMat2 = new THREE.MeshBasicMaterial({
+  color: 0xc084fc,
+  transparent: true,
+  opacity: 0.35,
+  blending: THREE.AdditiveBlending
+});
+const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
+ring2.rotation.y = Math.PI / 4;
+group.add(ring2);
+
+// Mouse tracking & scroll reactivity
+let mouseX = 0;
+let mouseY = 0;
+let targetX = 0;
+let targetY = 0;
+
+window.addEventListener('mousemove', (e) => {
+  const windowHalfX = window.innerWidth / 2;
+  const windowHalfY = window.innerHeight / 2;
+  mouseX = (e.clientX - windowHalfX) * 0.0006;
+  mouseY = (e.clientY - windowHalfY) * 0.0006;
+});
+
+window.addEventListener('resize', () => {
+  const w = container.clientWidth || window.innerWidth;
+  const h = container.clientHeight || window.innerHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+let clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const elapsedTime = clock.getElapsedTime();
+
+  targetX += (mouseX - targetX) * 0.05;
+  targetY += (mouseY - targetY) * 0.05;
+
+  group.rotation.y = elapsedTime * 0.12 + targetX * 1.5;
+  group.rotation.x = Math.sin(elapsedTime * 0.08) * 0.15 + targetY * 1.5;
+  
+  ring1.rotation.z = elapsedTime * 0.18;
+  ring2.rotation.z = -elapsedTime * 0.14;
+
+  const scrollY = window.scrollY || window.pageYOffset || 0;
+  group.position.y = -scrollY * 0.008;
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_2 -->
+<!-- Deep Ambient Radial Glows -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
+<div class="w-[720px] h-[520px] rounded-full blur-[140px] opacity-40 bg-gradient-to-tr from-primary-container via-secondary-container to-transparent"></div>
+<div class="absolute w-[360px] h-[360px] rounded-full blur-[90px] opacity-30 bg-tertiary-container"></div>
+</div>
+<!-- Fine Grid Backdrop Layer -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.03] [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:4rem_4rem]"></div>
+<!-- Main Content Container -->
+<div class="relative z-10 max-w-[1440px] mx-auto w-full flex flex-col items-center text-center">
+<!-- Live Version Pill -->
+<a class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-high/80 backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] hover:bg-surface-variant transition-all duration-300 group mb-space-lg" href="#showcase">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-semibold">ListingLab 2.0 is Live</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1 group-hover:text-on-surface transition-colors">
+          Next-Gen Neural Photography Engine
+          <span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+</a>
+<!-- Headline -->
+<h1 class="font-display-hero text-headline-lg-mobile md:text-display-hero max-w-5xl tracking-tight leading-[1.08] text-white">
+        Turn raw photos into <br class="hidden sm:inline"/>
+<span class="bg-gradient-to-r from-white via-primary-fixed to-secondary-fixed-dim bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(195,192,255,0.35)]">
+          marketplace-ready
+        </span>
+        listings
+      </h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-lg leading-relaxed">
+        Online sellers waste 14+ hours per week editing catalog photos. Our neural pipeline handles dynamic lighting, sub-pixel isolation, and strict platform compliance in <span class="text-primary font-medium">1.4 seconds</span>.
+      </p>
+<!-- Dual CTA Row -->
+<div class="flex flex-wrap items-center justify-center gap-space-md mt-space-xl">
+<a class="inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-xl font-headline-sm text-headline-sm font-semibold text-white bg-gradient-to-r from-primary-container to-secondary-container shadow-[0_0_30px_rgba(96,1,209,0.45)] hover:shadow-[0_0_45px_rgba(79,70,229,0.7)] transition-all duration-300 active:scale-95 group" href="#transform">
+<span>Transform Your First Photo</span>
+<span class="material-symbols-outlined text-body-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<button class="inline-flex items-center justify-center gap-space-sm px-space-lg py-space-md rounded-xl font-body-lg text-body-lg text-on-surface bg-surface-container/60 hover:bg-surface-container-high/80 backdrop-blur-md shadow-md transition-all duration-300" id="openDemoBtn" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">play_circle</span>
+<span>Watch 60s Demo</span>
+<span class="font-label-code text-label-code text-on-surface-variant px-space-xs py-0.5 rounded bg-surface-container-lowest">0:59</span>
+</button>
+</div>
+<!-- Telemetry Strip Under CTAs -->
+<div class="flex flex-wrap items-center justify-center gap-space-lg mt-space-lg text-on-surface-variant font-label-code text-label-code">
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[16px]">bolt</span>
+<span>Latency: 1.4s average</span>
+</span>
+<span class="hidden sm:inline text-outline-variant">•</span>
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+<span>8K Ultra-Res Output</span>
+</span>
+<span class="hidden sm:inline text-outline-variant">•</span>
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span>Zero Installation</span>
+</span>
+</div>
+<!-- Hero Live Before/After Interactive Floating Card -->
+<div class="w-full max-w-4xl mt-space-xl pt-space-md">
+<div class="relative mx-auto rounded-xl bg-surface-container-low/90 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_-5px_rgba(79,70,229,0.25)] p-space-sm sm:p-space-md">
+<!-- Chrome Bar -->
+<div class="flex items-center justify-between pb-space-sm px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-error/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary/70"></span>
+<span class="ml-space-sm font-label-code text-label-code text-on-surface-variant">pipeline_live_feed://sneaker_sku_8829.raw</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-tertiary-container/40 text-tertiary font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> 0.8s INFERENCE
+              </span>
+</div>
+</div>
+<!-- Split Visual Viewport -->
+<div class="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-lg overflow-hidden select-none cursor-ew-resize group" id="heroCompareContainer">
+<!-- Studio "After" Image (Full Base) -->
+<img alt="Luxury sneaker studio photograph" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQaabiwM_4JwADwh4ZRlw4QmkIawzKtbmo4Wehjj-4Rz0mKWPW5eYX9gdKa7Ws9o6a0-qsMCsQUCO5Ir5NMnWr4rphK3_PRv0KUThHgrw732JPNmkf-H4lYjQMNNDNLvFsqaJ5cMfU02_EQCF6w3tLnsI-PxvCbc4GdotrC6KlauGmBJqyXL5NzUO3VoMOtN_or58vbnGHf_ouIVgB1WW9x8gqcapx013KL_7kNS3nnYCdOcXO70Z_"/>
+<div class="absolute top-space-md right-space-md z-20 pointer-events-none">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md shadow-md text-secondary font-label-caps text-label-caps uppercase">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span> After: Studio Grade (+310% Sales)
+              </span>
+</div>
+<!-- Raw "Before" Image (Clipped Overlay) -->
+<div class="absolute inset-0 w-[50%] overflow-hidden bg-surface-container-lowest" id="heroBeforeClip">
+<img alt="Raw smartphone snapshot of sneaker on desk" class="absolute top-0 left-0 max-w-none w-full h-full object-cover" id="heroBeforeImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRAwwPODWkOwaWPt8vHPpXDFU_5s2hv1vApLmObD0OCk9eXWbSH2EmgaiUonfUSspuSYW0v_8BNX8koFDIkcT-jl5J0mubKz5bp9jh-dcrizlRtdONgC8-o7nZmJhL_A0kiyggolw5FxFLiOYtuQXGWtIipl9sC-ybSzyleb9ZyOtZ8spfTBC1KGSXJlSc9RO6H61UVULhp4U0MuvTZ8w6ErxJYdTdYBwq---ALd5eHKSaelVk8_zo"/>
+<div class="absolute top-space-md left-space-md z-20 pointer-events-none">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md shadow-md text-on-surface-variant font-label-caps text-label-caps uppercase">
+<span class="material-symbols-outlined text-[14px]">phone_iphone</span> Before: Phone snap (-42% CTR)
+                </span>
+</div>
+</div>
+<!-- Divider Bar with Handle -->
+<div class="absolute top-0 bottom-0 left-[50%] -translate-x-1/2 w-0.5 bg-primary shadow-[0_0_12px_rgba(195,192,255,0.9)] z-30 pointer-events-none" id="heroDivider">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface-container-highest shadow-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]">code_blocks</span>
+</div>
+</div>
+<!-- Micro Instructions Overlay -->
+<div class="absolute bottom-space-sm left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container-lowest/70 backdrop-blur-sm text-on-surface-variant font-label-code text-label-code">
+<span class="material-symbols-outlined text-[14px]">swipe</span> Drag slider horizontally to inspect neural synthesis
+              </span>
+</div>
+</div>
+<!-- Bottom Metadata Bar -->
+<div class="mt-space-sm grid grid-cols-2 sm:grid-cols-4 gap-space-xs text-left">
+<div class="bg-surface-container/60 p-space-xs rounded flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Occlusion Isolation</span>
+<span class="font-label-code text-label-code text-secondary font-medium">Alpha Mask 99.8%</span>
+</div>
+<div class="bg-surface-container/60 p-space-xs rounded flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Ground Shadow</span>
+<span class="font-label-code text-label-code text-tertiary font-medium">Raytraced Diffuse</span>
+</div>
+<div class="bg-surface-container/60 p-space-xs rounded flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Kelvin Correction</span>
+<span class="font-label-code text-label-code text-primary font-medium">5400K Neutralized</span>
+</div>
+<div class="bg-surface-container/60 p-space-xs rounded flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Output Standard</span>
+<span class="font-label-code text-label-code text-white font-medium">Shopify 1:1 • 4096px</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STATS & SOCIAL PROOF STRIP -->
+<section class="w-full bg-surface-container-lowest py-space-xl">
+<div class="max-w-[1440px] mx-auto px-gutter-sm lg:px-margin">
+<div class="rounded-2xl bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-low p-space-lg lg:p-space-xl shadow-xl">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-space-lg text-center divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20">
+<div class="flex flex-col items-center px-space-md pt-space-sm lg:pt-0">
+<span class="font-display-hero text-headline-lg lg:text-display-hero text-white tracking-tight">68%</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-semibold mt-1">Smaller Files</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Lossless visual fidelity via AVIF &amp; WebP</span>
+</div>
+<div class="flex flex-col items-center px-space-md pt-space-sm lg:pt-0">
+<span class="font-display-hero text-headline-lg lg:text-display-hero text-white tracking-tight">5.2x</span>
+<span class="font-headline-sm text-headline-sm text-tertiary font-semibold mt-1">Faster Listings</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">From raw smartphone snap to live catalog in &lt;2 min</span>
+</div>
+<div class="flex flex-col items-center px-space-md pt-space-sm lg:pt-0">
+<span class="font-display-hero text-headline-lg lg:text-display-hero text-white tracking-tight">+41%</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold mt-1">Higher CTR</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">A/B tested across 240,000 marketplace listings</span>
+</div>
+<div class="flex flex-col items-center px-space-md pt-space-sm lg:pt-0">
+<span class="font-display-hero text-headline-lg lg:text-display-hero text-white tracking-tight">14.8M</span>
+<span class="font-headline-sm text-headline-sm text-secondary-fixed font-semibold mt-1">Photos Polished</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Trusted by 12,000+ power sellers &amp; top brands</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- HORIZONTAL SHOWCASE GALLERY -->
+<section class="w-full py-space-xl bg-background overflow-hidden" id="showcase">
+<div class="max-w-[1440px] mx-auto px-gutter-sm lg:px-margin mb-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">view_carousel</span> PARALLAX SHOWCASE
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-white mt-space-xs tracking-tight">Raw to Retail in Real-Time</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs max-w-xl">
+          Watch messy, unedited seller photos transform across top global marketplace standards.
+        </p>
+</div>
+<!-- Controls for gallery -->
+<div class="flex items-center gap-space-sm">
+<button class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors shadow-sm" id="scrollGalleryLeft">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors shadow-sm" id="scrollGalleryRight">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Strip Container -->
+<div class="w-full px-gutter-sm lg:px-margin">
+<div class="flex gap-space-lg overflow-x-auto pb-space-lg scrollbar-none snap-x snap-mandatory" id="galleryTrack">
+<!-- CARD 1: Luxury Sneakers -->
+<div class="min-w-[340px] sm:min-w-[480px] lg:min-w-[540px] shrink-0 snap-center bg-surface-container-low rounded-2xl p-space-md shadow-xl flex flex-col justify-between group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-white font-semibold">Streetwear &amp; Sneakers</span>
+<span class="font-label-caps text-label-caps uppercase px-space-sm py-0.5 rounded-full bg-secondary-container/40 text-secondary">Shopify Ready</span>
+</div>
+<!-- Visual Pair -->
+<div class="grid grid-cols-2 gap-space-xs rounded-xl overflow-hidden aspect-[4/3] relative">
+<div class="relative bg-surface-container-lowest">
+<img alt="Raw desk photo of sneaker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRAwwPODWkOwaWPt8vHPpXDFU_5s2hv1vApLmObD0OCk9eXWbSH2EmgaiUonfUSspuSYW0v_8BNX8koFDIkcT-jl5J0mubKz5bp9jh-dcrizlRtdONgC8-o7nZmJhL_A0kiyggolw5FxFLiOYtuQXGWtIipl9sC-ybSzyleb9ZyOtZ8spfTBC1KGSXJlSc9RO6H61UVULhp4U0MuvTZ8w6ErxJYdTdYBwq---ALd5eHKSaelVk8_zo"/>
+<span class="absolute bottom-2 left-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-label-code text-error">Cluttered Desk</span>
+</div>
+<div class="relative bg-surface-container-lowest">
+<img alt="Commercial studio photography of sneaker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQaabiwM_4JwADwh4ZRlw4QmkIawzKtbmo4Wehjj-4Rz0mKWPW5eYX9gdKa7Ws9o6a0-qsMCsQUCO5Ir5NMnWr4rphK3_PRv0KUThHgrw732JPNmkf-H4lYjQMNNDNLvFsqaJ5cMfU02_EQCF6w3tLnsI-PxvCbc4GdotrC6KlauGmBJqyXL5NzUO3VoMOtN_or58vbnGHf_ouIVgB1WW9x8gqcapx013KL_7kNS3nnYCdOcXO70Z_"/>
+<span class="absolute bottom-2 right-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-label-code text-secondary font-medium">Studio Relight</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-sm">
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Smart Alpha Mask</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">AI Pedestal Gen</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-primary font-medium">q_auto:95</span>
+</div>
+</div>
+<!-- CARD 2: Luxury Watch -->
+<div class="min-w-[340px] sm:min-w-[480px] lg:min-w-[540px] shrink-0 snap-center bg-surface-container-low rounded-2xl p-space-md shadow-xl flex flex-col justify-between group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-white font-semibold">Horology &amp; Fine Watches</span>
+<span class="font-label-caps text-label-caps uppercase px-space-sm py-0.5 rounded-full bg-primary-container/40 text-primary">Chrono24 Pass</span>
+</div>
+<!-- Visual Pair -->
+<div class="grid grid-cols-2 gap-space-xs rounded-xl overflow-hidden aspect-[4/3] relative">
+<div class="relative bg-surface-container-lowest">
+<img alt="Messy overhead shot of luxury watch on table" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyBQmbF6fcABo3MvQw696FvPSL6QWGDZGTqGfx5On8XJRE5HMnJwo5ahM8Hj59PMUgaGcSRe6IMoSUWt0LHk6-9KpeCW1b1Li0a7_ADQgm3-FIcGtpex8OkaPYXM_18518eka3vA8Vmt5sDCQgMB5MQ3fGpFw492Nmuxqp5KvAq3F7qnNzo4ABd5XYBvX8IAKHcjWO3R_--s4Fxbtyh_PYYuRgK_PSa4GGDPaWzoeelPidSl6MVoWi"/>
+<span class="absolute bottom-2 left-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-label-code text-error">Harsh Desk Glare</span>
+</div>
+<div class="relative bg-surface-container-lowest">
+<img alt="Studio luxury watch shot on obsidian pedestal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBboKy_HRfzp-jtWq11x566_t6XJD0v5TcVemtfHGMlf_3z_nWmKwK6KjmOeMXUjxLCUUMO_1B1CBcC8u2cWCdLYVK-PApujOEpYw-F4bXrFKzptw57LVbqSROPE69LCEuEua8A5kO2c0iOsavf5UL9bH-IHzTYkbr_tslQxl6Kmz2YL4DXYhK6Lpd_WT_cQ4NkoAtcBCKECkzqhmLQbdiImYJbJwZ26yAUXZkleNSWnSLFwgMyXw8C"/>
+<span class="absolute bottom-2 right-2 px-space-xs py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-label-code text-secondary font-medium">Obsidian Pedestal</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-sm">
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Dial Specular Polish</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">4K Micro Detail</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-tertiary font-medium">Zero Halo</span>
+</div>
+</div>
+<!-- CARD 3: Handbags & Leather Goods -->
+<div class="min-w-[340px] sm:min-w-[480px] lg:min-w-[540px] shrink-0 snap-center bg-surface-container-low rounded-2xl p-space-md shadow-xl flex flex-col justify-between group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-white font-semibold">Leather Goods &amp; Bags</span>
+<span class="font-label-caps text-label-caps uppercase px-space-sm py-0.5 rounded-full bg-tertiary-container/40 text-tertiary">Amazon RGB 255</span>
+</div>
+<!-- Graphic Synthetic Visual -->
+<div class="rounded-xl overflow-hidden aspect-[4/3] bg-surface-container-lowest p-space-md flex flex-col justify-between relative">
+<div class="flex items-center justify-between z-10">
+<span class="font-label-code text-label-code text-on-surface-variant">Skin Texture Preserved</span>
+<span class="font-label-caps text-label-caps px-space-xs py-0.5 bg-primary/20 text-primary rounded">RGB 255, 255, 255 Match</span>
+</div>
+<!-- Vector Illustration Schema for Leather Pipeline -->
+<div class="w-full flex items-center justify-center py-space-sm">
+<svg class="w-48 h-32 text-primary" fill="none" viewbox="0 0 200 120">
+<path class="opacity-40" d="M40 90 C 30 50, 60 20, 100 20 C 140 20, 170 50, 160 90 Z" stroke="currentColor" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M45 85 C 35 48, 65 25, 100 25 C 135 25, 165 48, 155 85 Z" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="2"></path>
+<circle cx="100" cy="20" fill="none" r="14" stroke="currentColor" stroke-width="2"></circle>
+<path d="M70 70 L 130 70" stroke="currentColor" stroke-width="1.5"></path>
+<circle cx="100" cy="70" fill="currentColor" r="4"></circle>
+</svg>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code z-10">
+<span>Lossless WebP Output</span>
+<span class="text-secondary font-semibold">120 KB (was 4.2 MB)</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-sm">
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Amazon White Spec</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Hardware Highlight</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-secondary font-medium">Strap Detangling</span>
+</div>
+</div>
+<!-- CARD 4: Fine Jewelry & Rings -->
+<div class="min-w-[340px] sm:min-w-[480px] lg:min-w-[540px] shrink-0 snap-center bg-surface-container-low rounded-2xl p-space-md shadow-xl flex flex-col justify-between group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-white font-semibold">Fine Jewelry &amp; Gemstones</span>
+<span class="font-label-caps text-label-caps uppercase px-space-sm py-0.5 rounded-full bg-secondary-container/40 text-secondary">Etsy Trending</span>
+</div>
+<!-- Diamond Caustic Simulation Card -->
+<div class="rounded-xl overflow-hidden aspect-[4/3] bg-surface-container-lowest p-space-md flex flex-col justify-between relative">
+<div class="flex items-center justify-between z-10">
+<span class="font-label-code text-label-code text-tertiary">Caustic Sparkle Engine</span>
+<span class="font-label-caps text-label-caps px-space-xs py-0.5 bg-secondary-container/30 text-secondary rounded">Facet Clarity 99.4%</span>
+</div>
+<div class="w-full flex items-center justify-center">
+<svg class="w-36 h-36 text-secondary" fill="none" viewbox="0 0 100 100">
+<polygon fill="currentColor" fill-opacity="0.1" points="50,15 80,38 70,85 30,85 20,38" stroke="currentColor" stroke-width="1.5"></polygon>
+<polygon fill="none" points="50,15 35,38 65,38" stroke="currentColor" stroke-width="1.2"></polygon>
+<line class="opacity-50" stroke="currentColor" stroke-width="1" x1="50" x2="50" y1="15" y2="85"></line>
+<line class="opacity-50" stroke="currentColor" stroke-width="1" x1="20" x2="80" y1="38" y2="38"></line>
+<circle class="animate-pulse" cx="50" cy="15" fill="#c3c0ff" r="3"></circle>
+<circle cx="80" cy="38" fill="#7bd0ff" r="2.5"></circle>
+</svg>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code z-10">
+<span>Shadow Re-synthesis</span>
+<span class="text-tertiary font-semibold">Micro Contact Shadow</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-sm">
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Prism Dispersion</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Macro Focus Stacking</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-primary font-medium">Blemish Removal</span>
+</div>
+</div>
+<!-- CARD 5: Electronics & Audio Gear -->
+<div class="min-w-[340px] sm:min-w-[480px] lg:min-w-[540px] shrink-0 snap-center bg-surface-container-low rounded-2xl p-space-md shadow-xl flex flex-col justify-between group hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-white font-semibold">Consumer Electronics</span>
+<span class="font-label-caps text-label-caps uppercase px-space-sm py-0.5 rounded-full bg-primary-container/40 text-primary">eBay Top Rated</span>
+</div>
+<!-- Acoustic Mesh / Screen Representation -->
+<div class="rounded-xl overflow-hidden aspect-[4/3] bg-surface-container-lowest p-space-md flex flex-col justify-between relative">
+<div class="flex items-center justify-between z-10">
+<span class="font-label-code text-label-code text-on-surface-variant">Anti-Glare Suppression</span>
+<span class="font-label-caps text-label-caps px-space-xs py-0.5 bg-tertiary-container/30 text-tertiary rounded">Screen Glare: 0%</span>
+</div>
+<div class="w-full flex items-center justify-center">
+<svg class="w-40 h-32 text-tertiary" fill="none" viewbox="0 0 160 100">
+<rect fill="currentColor" fill-opacity="0.08" height="60" rx="8" stroke="currentColor" stroke-width="2" width="120" x="20" y="20"></rect>
+<path d="M40 50 Q 80 20 120 50" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<circle cx="80" cy="50" r="16" stroke="currentColor" stroke-width="1.5"></circle>
+<circle cx="80" cy="50" fill="currentColor" r="6"></circle>
+</svg>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-label-code z-10">
+<span>Multi-Angle Pack</span>
+<span class="text-white font-semibold">6 Views Auto-Aligned</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs mt-space-md pt-space-sm">
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Dust &amp; Scuff Wipe</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant">Matte Finish Uniform</span>
+<span class="font-label-code text-label-code px-space-sm py-1 rounded bg-surface-container-high text-secondary font-medium">Batch Sync</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FEATURES GRID -->
+<section class="w-full py-space-xl bg-surface-container-lowest" id="features">
+<div class="max-w-[1440px] mx-auto px-gutter-sm lg:px-margin">
+<!-- Section Header -->
+<div class="max-w-3xl mb-space-xl">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">tune</span> CORE ARCHITECTURE
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-white mt-space-xs tracking-tight">
+          Engineered for deterministic commercial output.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+          Built for high-volume merchants, auction houses, and modern photography studios requiring ruthless visual consistency.
+        </p>
+</div>
+<!-- 3-Column Glassmorphism Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Feature 1 -->
+<div class="bg-surface-container-low hover:bg-surface-container rounded-2xl p-space-lg shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[26px]">content_cut</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">AI Background Removal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Sub-pixel edge detection trained on 12M commercial product photos. Never cuts hair, loose threads, shoe laces, or translucent glassware.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center gap-space-xs text-primary font-label-code text-label-code">
+<span>• Alpha Boundary &lt; 0.2px</span>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-low hover:bg-surface-container rounded-2xl p-space-lg shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 text-secondary flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[26px]">wb_sunny</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Studio Relighting &amp; Shadows</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Generates physically-accurate ground contact shadows, rim lights, and soft ambient occlusion matching high-end Broncolor studio softbox rigs.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center gap-space-xs text-secondary font-label-code text-label-code">
+<span>• Photorealistic Raymarch</span>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-low hover:bg-surface-container rounded-2xl p-space-lg shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/30 text-tertiary flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[26px]">crop</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Smart Platform Cropping</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              One-click dynamic auto-framing strictly adhering to the Amazon 85% rule, Shopify square ratios, GOAT sneaker specs, and IG shopping formats.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center gap-space-xs text-tertiary font-label-code text-label-code">
+<span>• Automated Marketplace Presets</span>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-low hover:bg-surface-container rounded-2xl p-space-lg shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary-fixed-dim flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[26px]">tag</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Auto Tagging &amp; SEO Alt Text</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Multimodal vision models extract brand signatures, silhouette shapes, and color harmonies, writing rich keywords for organic Google Image rank.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center gap-space-xs text-primary-fixed-dim font-label-code text-label-code">
+<span>• 100% JSON-LD Compliant</span>
+</div>
+</div>
+<!-- Feature 5 -->
+<div class="bg-surface-container-low hover:bg-surface-container rounded-2xl p-space-lg shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 text-secondary-fixed flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[26px]">compress</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">60%+ File Compression</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Algorithmic AVIF and WebP optimization pipeline delivering sub-50ms catalog load speeds without a single artifact or perceptual color shift.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center gap-space-xs text-secondary-fixed font-label-code text-label-code">
+<span>• SSIM Score: 0.994</span>
+</div>
+</div>
+<!-- Feature 6 -->
+<div class="bg-surface-container-low hover:bg-surface-container rounded-2xl p-space-lg shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/20 text-tertiary flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[26px]">terminal</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Batch Processing API &amp; CLI</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Ingest tens of thousands of SKU shots per day via Webhooks, Zapier, Python SDK, or our lightning-fast Go-powered developer CLI.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm flex items-center gap-space-xs text-tertiary font-label-code text-label-code">
+<span>• REST • gRPC • Webhooks</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- HOW IT WORKS (Connected 4-Step Pipeline) -->
+<section class="w-full py-space-xl bg-background" id="how-it-works">
+<div class="max-w-[1440px] mx-auto px-gutter-sm lg:px-margin">
+<div class="text-center max-w-2xl mx-auto mb-space-xl">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-semibold">ORCHESTRATION PIPELINE</span>
+<h2 class="font-headline-lg text-headline-lg text-white mt-space-xs tracking-tight">From Raw Camera Roll to Live Listing</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Four deterministic stages. Zero prompt engineering required.</p>
+</div>
+<!-- Step Cards Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md relative">
+<!-- Step 1 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">01</span>
+<span class="font-label-code text-label-code text-on-surface-variant px-space-xs py-0.5 rounded bg-surface-container-lowest">INGEST</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Bulk Upload</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Drag &amp; drop any smartphone snap, RAW camera roll, or connect your S3 bucket directly.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs font-label-code text-label-code text-primary">
+<span class="material-symbols-outlined text-[16px]">upload_file</span> Multi-file parallel sync
+          </div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">02</span>
+<span class="font-label-code text-label-code text-on-surface-variant px-space-xs py-0.5 rounded bg-surface-container-lowest">COMPUTE</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Neural Synthesis</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              AI automatically extracts objects, normalizes color Kelvin levels, and generates realistic pedestals.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs font-label-code text-label-code text-secondary">
+<span class="material-symbols-outlined text-[16px]">memory</span> TensorRT accelerated
+          </div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">03</span>
+<span class="font-label-code text-label-code text-on-surface-variant px-space-xs py-0.5 rounded bg-surface-container-lowest">VALIDATE</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Marketplace Preset</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              One-click compliance profiles for Amazon, GOAT, eBay, Chrono24, and Shopify storefronts.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs font-label-code text-label-code text-tertiary">
+<span class="material-symbols-outlined text-[16px]">verified</span> 100% Policy compliant
+          </div>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold">04</span>
+<span class="font-label-code text-label-code text-on-surface-variant px-space-xs py-0.5 rounded bg-surface-container-lowest">DEPLOY</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold mb-space-xs">Instant Export</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Lossless 4K archive download, direct cloud sync, or automated live SKU catalog sync via REST.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs font-label-code text-label-code text-primary-fixed">
+<span class="material-symbols-outlined text-[16px]">sync_saved_locally</span> Live CDN delivery
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE LIVE PLAYGROUND / DEMO SECTION -->
+<section class="w-full py-space-xl bg-surface-container-lowest" id="transform">
+<div class="max-w-[1440px] mx-auto px-gutter-sm lg:px-margin">
+<div class="rounded-3xl bg-surface-container-low p-space-lg md:p-space-xl shadow-2xl relative overflow-hidden">
+<!-- Ambient Back Glow -->
+<div class="absolute -right-32 -bottom-32 w-96 h-96 rounded-full blur-[120px] bg-primary-container/30 pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Playground Controls -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">science</span> LIVE EXPERIMENT CONSOLE
+            </span>
+<h3 class="font-headline-lg text-headline-lg text-white tracking-tight">Test the Pipeline Now</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Switch targets and preset lighting models to experience real-time neural compositing.
+            </p>
+<!-- Target Selection Buttons -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-code text-label-code text-on-surface-variant uppercase">Select Demo Subject</span>
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container-high text-white font-body-sm text-body-sm flex items-center gap-space-xs shadow-sm transition-all" id="selectSneakerBtn" type="button">
+<span class="material-symbols-outlined text-primary text-[18px]">roller_skating</span>
+<span>Designer Sneaker</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface-variant hover:text-white font-body-sm text-body-sm flex items-center gap-space-xs transition-all" id="selectWatchBtn" type="button">
+<span class="material-symbols-outlined text-secondary text-[18px]">watch</span>
+<span>Chronograph</span>
+</button>
+</div>
+</div>
+<!-- Lighting Mode Sliders / Presets -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-code text-label-code text-on-surface-variant uppercase">Lighting Rig Preset</span>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="px-space-xs py-space-xs rounded bg-surface-container-high text-white font-label-code text-label-code text-center" type="button">Obsidian Pedestal</button>
+<button class="px-space-xs py-space-xs rounded bg-surface-container text-on-surface-variant hover:text-white font-label-code text-label-code text-center" type="button">Amazon Pure 255</button>
+<button class="px-space-xs py-space-xs rounded bg-surface-container text-on-surface-variant hover:text-white font-label-code text-label-code text-center" type="button">Softbox Rim Light</button>
+</div>
+</div>
+<!-- Output Resolution Switch -->
+<div class="bg-surface-container/60 p-space-sm rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]">high_res</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-white font-medium">Export Super-Resolution</span>
+<span class="font-label-code text-label-code text-on-surface-variant">ESRGAN 4X Upscaler active</span>
+</div>
+</div>
+<span class="px-space-sm py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-caps text-label-caps uppercase">ENABLED</span>
+</div>
+<a class="mt-space-sm w-full py-space-md rounded-xl font-headline-sm text-headline-sm font-semibold text-center text-white bg-gradient-to-r from-primary-container to-secondary-container shadow-lg hover:shadow-xl transition-all" data-path="signup" href="#">
+              Batch Process Your Inventory
+            </a>
+</div>
+<!-- Playground Interactive Canvas -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-2xl relative">
+<div class="flex items-center justify-between pb-space-sm text-on-surface-variant font-label-code text-label-code">
+<span id="playgroundStatusText">Displaying: Designer Sneaker (Sample SKU #0912)</span>
+<span class="text-tertiary font-medium">99.8% Confidence</span>
+</div>
+<!-- Canvas Visual Split Box -->
+<div class="relative w-full aspect-square sm:aspect-[4/3] rounded-xl overflow-hidden select-none cursor-ew-resize" id="interactivePlaygroundBox">
+<img alt="Studio photography preview" class="absolute inset-0 w-full h-full object-cover" id="playgroundAfterImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQaabiwM_4JwADwh4ZRlw4QmkIawzKtbmo4Wehjj-4Rz0mKWPW5eYX9gdKa7Ws9o6a0-qsMCsQUCO5Ir5NMnWr4rphK3_PRv0KUThHgrw732JPNmkf-H4lYjQMNNDNLvFsqaJ5cMfU02_EQCF6w3tLnsI-PxvCbc4GdotrC6KlauGmBJqyXL5NzUO3VoMOtN_or58vbnGHf_ouIVgB1WW9x8gqcapx013KL_7kNS3nnYCdOcXO70Z_"/>
+<div class="absolute inset-0 w-[45%] overflow-hidden bg-surface-container-lowest" id="playgroundBeforeClip">
+<img alt="Raw snapshot preview" class="absolute top-0 left-0 max-w-none w-full h-full object-cover" id="playgroundBeforeImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRAwwPODWkOwaWPt8vHPpXDFU_5s2hv1vApLmObD0OCk9eXWbSH2EmgaiUonfUSspuSYW0v_8BNX8koFDIkcT-jl5J0mubKz5bp9jh-dcrizlRtdONgC8-o7nZmJhL_A0kiyggolw5FxFLiOYtuQXGWtIipl9sC-ybSzyleb9ZyOtZ8spfTBC1KGSXJlSc9RO6H61UVULhp4U0MuvTZ8w6ErxJYdTdYBwq---ALd5eHKSaelVk8_zo"/>
+</div>
+<div class="absolute top-0 bottom-0 left-[45%] -translate-x-1/2 w-0.5 bg-primary shadow-[0_0_12px_rgba(195,192,255,0.9)] z-30 pointer-events-none" id="playgroundDivider">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-surface-container-highest shadow-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">compare</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-sm text-on-surface-variant font-label-code text-label-code">
+<span>Left: Raw uncorrected capture</span>
+<span>Right: Neural calibrated 8K</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FINAL CALL TO ACTION SECTION -->
+<section class="w-full py-space-xl bg-background relative overflow-hidden">
+<!-- Massive Concentric Indigo Violet Glow -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+<div class="w-[900px] h-[550px] rounded-full blur-[160px] opacity-30 bg-gradient-to-r from-primary-container via-secondary-container to-transparent"></div>
+</div>
+<div class="max-w-[1440px] mx-auto px-gutter-sm lg:px-margin relative z-10 text-center">
+<div class="max-w-3xl mx-auto flex flex-col items-center">
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center shadow-[0_0_35px_rgba(96,1,209,0.5)] mb-space-lg">
+<span class="material-symbols-outlined text-white text-[32px]">auto_fix_high</span>
+</div>
+<h2 class="font-display-hero text-headline-lg-mobile md:text-headline-lg text-white font-bold tracking-tight leading-tight">
+          Ready to turn amateur snapshots into 7-figure catalog assets?
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mt-space-md">
+          Start with 50 free high-resolution studio exports. No credit card required. Ingest your first batch in seconds.
+        </p>
+<!-- Main Button with Pulsing Glow -->
+<div class="mt-space-xl flex flex-col items-center gap-space-md">
+<a class="relative inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-xl font-headline-sm text-headline-sm font-semibold text-white bg-gradient-to-r from-primary-container to-secondary-container shadow-[0_0_35px_rgba(124,58,237,0.5)] hover:shadow-[0_0_55px_rgba(124,58,237,0.8)] transition-all duration-300 active:scale-95" data-path="signup" href="#">
+<span>Get Started Free</span>
+<span class="material-symbols-outlined text-body-lg">arrow_forward</span>
+</a>
+<div class="flex flex-wrap items-center justify-center gap-space-md text-on-surface-variant font-label-code text-label-code mt-space-xs">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">done</span> Supports PNG, JPG, HEIC, WEBP &amp; RAW
+            </span>
+<span class="hidden sm:inline text-outline-variant">•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">done</span> Commercial usage rights included
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  (function() {
+    // 1. Hero Before/After Interactive Drag
+    const heroBox = document.getElementById('heroCompareContainer');
+    const heroClip = document.getElementById('heroBeforeClip');
+    const heroDivider = document.getElementById('heroDivider');
+    const heroBeforeImg = document.getElementById('heroBeforeImg');
+
+    function updateHeroSplit(clientX) {
+      if (!heroBox || !heroClip || !heroDivider) return;
+      const rect = heroBox.getBoundingClientRect();
+      let percent = ((clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(5, Math.min(95, percent));
+      heroClip.style.width = percent + '%';
+      heroDivider.style.left = percent + '%';
+      if (heroBeforeImg) {
+        heroBeforeImg.style.width = rect.width + 'px';
+      }
+    }
+
+    if (heroBox) {
+      window.addEventListener('resize', () => {
+        if (heroBeforeImg && heroBox) {
+          heroBeforeImg.style.width = heroBox.getBoundingClientRect().width + 'px';
+        }
+      });
+      // Initial sizing
+      setTimeout(() => {
+        if (heroBeforeImg && heroBox) {
+          heroBeforeImg.style.width = heroBox.getBoundingClientRect().width + 'px';
+        }
+      }, 100);
+
+      let isDraggingHero = false;
+      heroBox.addEventListener('mousedown', (e) => {
+        isDraggingHero = true;
+        updateHeroSplit(e.clientX);
+      });
+      window.addEventListener('mouseup', () => { isDraggingHero = false; });
+      window.addEventListener('mousemove', (e) => {
+        if (isDraggingHero) updateHeroSplit(e.clientX);
+      });
+
+      // Touch support
+      heroBox.addEventListener('touchstart', (e) => {
+        isDraggingHero = true;
+        if (e.touches && e.touches[0]) updateHeroSplit(e.touches[0].clientX);
+      }, { passive: true });
+      window.addEventListener('touchend', () => { isDraggingHero = false; });
+      window.addEventListener('touchmove', (e) => {
+        if (isDraggingHero && e.touches && e.touches[0]) {
+          updateHeroSplit(e.touches[0].clientX);
+        }
+      }, { passive: true });
+    }
+
+    // 2. Horizontal Showcase Gallery Scroll Controls
+    const galleryTrack = document.getElementById('galleryTrack');
+    const scrollLeftBtn = document.getElementById('scrollGalleryLeft');
+    const scrollRightBtn = document.getElementById('scrollGalleryRight');
+
+    if (galleryTrack && scrollLeftBtn && scrollRightBtn) {
+      scrollLeftBtn.addEventListener('click', () => {
+        galleryTrack.scrollBy({ left: -420, behavior: 'smooth' });
+      });
+      scrollRightBtn.addEventListener('click', () => {
+        galleryTrack.scrollBy({ left: 420, behavior: 'smooth' });
+      });
+    }
+
+    // 3. Interactive Playground Target Switcher & Slider
+    const playgroundBox = document.getElementById('interactivePlaygroundBox');
+    const playgroundClip = document.getElementById('playgroundBeforeClip');
+    const playgroundDivider = document.getElementById('playgroundDivider');
+    const playgroundBeforeImg = document.getElementById('playgroundBeforeImg');
+    const playgroundAfterImg = document.getElementById('playgroundAfterImg');
+    const playgroundStatusText = document.getElementById('playgroundStatusText');
+
+    const selectSneakerBtn = document.getElementById('selectSneakerBtn');
+    const selectWatchBtn = document.getElementById('selectWatchBtn');
+
+    function updatePlaygroundSplit(clientX) {
+      if (!playgroundBox || !playgroundClip || !playgroundDivider) return;
+      const rect = playgroundBox.getBoundingClientRect();
+      let percent = ((clientX - rect.left) / rect.width) * 100;
+      percent = Math.max(5, Math.min(95, percent));
+      playgroundClip.style.width = percent + '%';
+      playgroundDivider.style.left = percent + '%';
+      if (playgroundBeforeImg) {
+        playgroundBeforeImg.style.width = rect.width + 'px';
+      }
+    }
+
+    if (playgroundBox) {
+      let isDraggingPlayground = false;
+      playgroundBox.addEventListener('mousedown', (e) => {
+        isDraggingPlayground = true;
+        updatePlaygroundSplit(e.clientX);
+      });
+      window.addEventListener('mouseup', () => { isDraggingPlayground = false; });
+      window.addEventListener('mousemove', (e) => {
+        if (isDraggingPlayground) updatePlaygroundSplit(e.clientX);
+      });
+
+      playgroundBox.addEventListener('touchstart', (e) => {
+        isDraggingPlayground = true;
+        if (e.touches && e.touches[0]) updatePlaygroundSplit(e.touches[0].clientX);
+      }, { passive: true });
+      window.addEventListener('touchend', () => { isDraggingPlayground = false; });
+      window.addEventListener('touchmove', (e) => {
+        if (isDraggingPlayground && e.touches && e.touches[0]) {
+          updatePlaygroundSplit(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      setTimeout(() => {
+        if (playgroundBeforeImg && playgroundBox) {
+          playgroundBeforeImg.style.width = playgroundBox.getBoundingClientRect().width + 'px';
+        }
+      }, 100);
+    }
+
+    // Target Selection Toggle
+    if (selectSneakerBtn && selectWatchBtn && playgroundBeforeImg && playgroundAfterImg && playgroundStatusText) {
+      selectSneakerBtn.addEventListener('click', () => {
+        playgroundBeforeImg.src = "https://lh3.googleusercontent.com/aida-public/AB6AXuBRAwwPODWkOwaWPt8vHPpXDFU_5s2hv1vApLmObD0OCk9eXWbSH2EmgaiUonfUSspuSYW0v_8BNX8koFDIkcT-jl5J0mubKz5bp9jh-dcrizlRtdONgC8-o7nZmJhL_A0kiyggolw5FxFLiOYtuQXGWtIipl9sC-ybSzyleb9ZyOtZ8spfTBC1KGSXJlSc9RO6H61UVULhp4U0MuvTZ8w6ErxJYdTdYBwq---ALd5eHKSaelVk8_zo";
+        playgroundAfterImg.src = "https://lh3.googleusercontent.com/aida-public/AB6AXuBQaabiwM_4JwADwh4ZRlw4QmkIawzKtbmo4Wehjj-4Rz0mKWPW5eYX9gdKa7Ws9o6a0-qsMCsQUCO5Ir5NMnWr4rphK3_PRv0KUThHgrw732JPNmkf-H4lYjQMNNDNLvFsqaJ5cMfU02_EQCF6w3tLnsI-PxvCbc4GdotrC6KlauGmBJqyXL5NzUO3VoMOtN_or58vbnGHf_ouIVgB1WW9x8gqcapx013KL_7kNS3nnYCdOcXO70Z_";
+        playgroundStatusText.textContent = "Displaying: Designer Sneaker (Sample SKU #0912)";
+        selectSneakerBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        selectSneakerBtn.classList.add('bg-surface-container-high', 'text-white');
+        selectWatchBtn.classList.remove('bg-surface-container-high', 'text-white');
+        selectWatchBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+
+      selectWatchBtn.addEventListener('click', () => {
+        playgroundBeforeImg.src = "https://lh3.googleusercontent.com/aida-public/AB6AXuAyBQmbF6fcABo3MvQw696FvPSL6QWGDZGTqGfx5On8XJRE5HMnJwo5ahM8Hj59PMUgaGcSRe6IMoSUWt0LHk6-9KpeCW1b1Li0a7_ADQgm3-FIcGtpex8OkaPYXM_18518eka3vA8Vmt5sDCQgMB5MQ3fGpFw492Nmuxqp5KvAq3F7qnNzo4ABd5XYBvX8IAKHcjWO3R_--s4Fxbtyh_PYYuRgK_PSa4GGDPaWzoeelPidSl6MVoWi";
+        playgroundAfterImg.src = "https://lh3.googleusercontent.com/aida-public/AB6AXuBboKy_HRfzp-jtWq11x566_t6XJD0v5TcVemtfHGMlf_3z_nWmKwK6KjmOeMXUjxLCUUMO_1B1CBcC8u2cWCdLYVK-PApujOEpYw-F4bXrFKzptw57LVbqSROPE69LCEuEua8A5kO2c0iOsavf5UL9bH-IHzTYkbr_tslQxl6Kmz2YL4DXYhK6Lpd_WT_cQ4NkoAtcBCKECkzqhmLQbdiImYJbJwZ26yAUXZkleNSWnSLFwgMyXw8C";
+        playgroundStatusText.textContent = "Displaying: Chronograph Timepiece (Sample SKU #4410)";
+        selectWatchBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        selectWatchBtn.classList.add('bg-surface-container-high', 'text-white');
+        selectSneakerBtn.classList.remove('bg-surface-container-high', 'text-white');
+        selectSneakerBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+    }
+
+    // Demo Button trigger scroll to playground
+    const openDemoBtn = document.getElementById('openDemoBtn');
+    if (openDemoBtn) {
+      openDemoBtn.addEventListener('click', () => {
+        const target = document.getElementById('transform');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest py-space-xl"><div class="w-full px-gutter-sm lg:px-margin max-w-[1440px] mx-auto"><div class="grid grid-cols-1 md:grid-cols-5 gap-space-xl mb-space-xl"><div class="md:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><img alt="ListingLab Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VrXp8r7GMY-yt12MvkDZDZJc1uWtJfqlKrgQtXB0Aq2AEqCyRnnPk1y65AZGeohX6rj0sMTj54bmNMB28Y-quDZ8uurakUz3OdoV5eeu1JMYUg6991lynQTvVT78FrV2wCY2aYVrXC-AWcoN2F6b0vHq1q_kJPrfMuyu1xi3BwTvjmmVCdfllJf4zVZqidllkmD0j3cBS9hMKvIOc3qNLSvG4SKQlVoyKDA2PhJtuWrwY4PFpCr_SyP-M"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-semibold">ListingLab</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">High-performance AI engine for real estate listing intelligence, algorithmic visual staging, and automated marketing syndication.</p><div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low w-fit"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant">All Systems Operational</span></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface font-semibold">Product</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="features" href="#">Features</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase" href="#">Showcase</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="pricing" href="#">Pricing</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="documentation" href="#">API Reference</a></div><div class="flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface font-semibold">Company</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">About Us</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="documentation" href="#">Changelog</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Careers</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></div><div class="flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface font-semibold">Legal</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="security" href="#">Security</a></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 ListingLab, Inc. All rights reserved.</p><div class="flex items-center gap-space-md"><span class="font-label-code text-label-code text-on-surface-variant">v2.4.0-prod</span></div></div></div></footer></body></html>
