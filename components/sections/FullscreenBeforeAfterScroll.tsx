@@ -71,11 +71,11 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
     >
-      {/* Background Studio Base (After — Cloudinary optimized) */}
+      {/* Background Studio Base (After — Clean Outdoor Staged Studio) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://res.cloudinary.com/demo/image/fetch/c_fill,g_auto,w_1920,h_1080,f_auto,q_auto/https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1"
+          src="/images/trailblazer-hd.jpg"
           alt="Studio Staged Output"
           className="absolute right-0 top-0 h-full w-[200%] max-w-none object-cover object-right"
         />
@@ -84,12 +84,12 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
         {/* After Label - Clean Non-Pill Rectangular Badge */}
         <div className="absolute top-8 right-8 z-30 pointer-events-none">
           <span className="px-3.5 py-1.5 bg-[#14100C]/85 backdrop-blur-md border border-[#FF7A30]/40 text-[#FF7A30] text-xs font-mono tracking-wider">
-            AFTER — f_auto, q_auto, c_fill
+            STUDIO GRADE — CLEAN
           </span>
         </div>
       </div>
 
-      {/* Clipped Overlay (Before — original upload) */}
+      {/* Clipped Overlay (Before — Raw Muddy Field Capture) */}
       <div
         ref={wipeClipRef}
         className="absolute inset-0 h-full overflow-hidden bg-[#14100C]"
@@ -98,8 +98,8 @@ export const FullscreenBeforeAfterScroll: React.FC = () => {
         <div className="relative w-screen h-screen overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/mall.jpg"
-            alt="Original Upload"
+            src="/images/trailblazer-hd.jpg"
+            alt="Original Muddy Capture"
             className="absolute left-0 top-0 h-full w-[200%] max-w-none object-cover object-left"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#14100C]/70 via-transparent to-[#14100C]/40 pointer-events-none" />

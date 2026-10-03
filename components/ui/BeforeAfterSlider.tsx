@@ -14,6 +14,7 @@ interface BeforeAfterSliderProps {
   className?: string;
   aspectRatio?: string;
   microInstruction?: string;
+  useCustomCrop?: boolean;
 }
 
 export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
@@ -27,6 +28,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   className,
   aspectRatio = "aspect-[16/9] sm:aspect-[21/9]",
   microInstruction = "Drag slider horizontally to inspect neural synthesis",
+  useCustomCrop = false,
 }) => {
   const [sliderPosition, setSliderPosition] = useState<number>(initialPosition);
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -92,7 +94,10 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
       <img
         src={afterImage}
         alt={afterAlt}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        className={cn(
+          "absolute inset-0 h-full pointer-events-none",
+          useCustomCrop ? "w-[200%] max-w-none object-cover object-right" : "w-full object-cover"
+        )}
         loading="eager"
       />
 
@@ -113,8 +118,11 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         <img
           src={beforeImage}
           alt={beforeAlt}
-          className="absolute top-0 left-0 h-full max-w-none object-cover pointer-events-none"
-          style={{ width: containerWidth > 0 ? `${containerWidth}px` : "100%" }}
+          className={cn(
+            "absolute top-0 left-0 h-full pointer-events-none max-w-none object-cover",
+            useCustomCrop ? "w-[200%] object-left" : ""
+          )}
+          style={{ width: useCustomCrop ? "200%" : (containerWidth > 0 ? `${containerWidth}px` : "100%") }}
           loading="eager"
         />
 

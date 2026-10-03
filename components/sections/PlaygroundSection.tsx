@@ -7,19 +7,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlaskConical, Check, ArrowRight, Sparkles, Watch, ShoppingBag } from "lucide-react";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 
-// NOTE: sneaker uses a high quality mall image — before = raw, after = smart-cropped+optimized
-// Both URLs below are real Cloudinary delivery URLs showing a genuine transformation difference.
+// NOTE: sneaker uses the high-definition side-by-side shoe image (trailblazer-hd.jpg)
 const demos = {
   sneaker: {
-    title: "Mall Photo — Before & After",
+    title: "Trailblazer Outdoor Shoe",
     sku: "Live Cloudinary Transform",
     // Original unoptimized upload
     before:
-      "/images/mall.jpg",
-    // Same image: c_fill, g_auto, w_1080, h_1080, f_auto, q_auto
+      "/images/trailblazer-hd.jpg",
     after:
-      "https://res.cloudinary.com/demo/image/fetch/c_fill,g_auto,w_1080,h_1080,f_auto,q_auto/https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1",
-    useCustomCrop: false,
+      "/images/trailblazer-hd.jpg",
+    useCustomCrop: true,
   },
   watch: {
     title: "Chronograph Timepiece",
@@ -207,6 +205,7 @@ export const PlaygroundSection: React.FC = () => {
                   beforeLabel="Before: Original upload"
                   afterLabel="After: Cloudinary smart crop + f_auto, q_auto"
                   aspectRatio="aspect-square sm:aspect-[4/3]"
+                  useCustomCrop={currentDemo.useCustomCrop}
                 />
 
                 <div className="flex items-center justify-between pt-3 text-[#B8AC96] font-mono text-[11px]">

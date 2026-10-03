@@ -11,7 +11,7 @@ export const galleryCards = [
     title: "Streetwear & Footwear",
     badge: "Shopify Ready",
     useCustomCrop: true,
-    imgSrc: "/images/shoe.jpg",
+    imgSrc: "/images/trailblazer-hd.jpg",
     beforeTag: "Muddy Trail RAW",
     afterTag: "Studio Staged",
     chips: ["Smart Alpha Mask", "AI Pedestal Gen", "q_auto:95"],
