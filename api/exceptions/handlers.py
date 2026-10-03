@@ -7,7 +7,7 @@ Returns clean JSON errors.  Never exposes stack traces or credentials.
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from app.exceptions.errors import ListingLabException
+from api.exceptions.errors import ListingLabException
 
 
 def register_exception_handlers(app: FastAPI) -> None:

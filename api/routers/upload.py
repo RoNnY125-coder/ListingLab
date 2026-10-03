@@ -11,9 +11,9 @@ from __future__ import annotations
 from fastapi import APIRouter, File, UploadFile
 from fastapi.responses import JSONResponse
 
-from app.exceptions.errors import FileTooLargeException, InvalidFileException
-from app.schemas.upload import ModerationInfo, UploadResponse
-from app.services import cloudinary_service
+from api.exceptions.errors import FileTooLargeException, InvalidFileException
+from api.schemas.upload import ModerationInfo, UploadResponse
+from api.services import cloudinary_service
 
 router = APIRouter(tags=["upload"])
 

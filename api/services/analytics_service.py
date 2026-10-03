@@ -23,8 +23,8 @@ from typing import List
 
 import httpx
 
-from app.schemas.stats import StatsResponse
-from app.services import cloudinary_service
+from api.schemas.stats import StatsResponse
+from api.services import cloudinary_service
 
 _HEAD_TIMEOUT = 8.0
 _SAMPLE_LIMIT = 50   # max images to HEAD-probe for size savings

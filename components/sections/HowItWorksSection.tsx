@@ -92,7 +92,7 @@ export const HowItWorksSection: React.FC = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const uploadRes = await fetch("http://localhost:8000/api/upload", {
+      const uploadRes = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
@@ -103,7 +103,7 @@ export const HowItWorksSection: React.FC = () => {
       setUploadedImageId(uploadData.publicId);
       setUploadMetadata(uploadData);
 
-      const processRes = await fetch(`http://localhost:8000/api/process?publicId=${uploadData.publicId}`);
+      const processRes = await fetch(`/api/process?publicId=${uploadData.publicId}`);
       const processData = await processRes.json();
 
       if (!processRes.ok) throw new Error(processData.detail || "Process failed");

@@ -9,8 +9,8 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
-from app.schemas.stats import StatsResponse
-from app.services import analytics_service
+from api.schemas.stats import StatsResponse
+from api.services import analytics_service
 
 router = APIRouter(tags=["stats"])
 

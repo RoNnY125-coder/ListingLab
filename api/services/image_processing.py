@@ -11,8 +11,8 @@ from __future__ import annotations
 
 import httpx
 
-from app.schemas.process import ImageUrls, ProcessResponse
-from app.services import cloudinary_service
+from api.schemas.process import ImageUrls, ProcessResponse
+from api.services import cloudinary_service
 
 
 # Maximum time (seconds) to wait for Cloudinary HEAD response

@@ -9,9 +9,9 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from app.schemas.library import LibraryItemResponse
-from app.schemas.upload import ModerationInfo
-from app.services import cloudinary_service
+from api.schemas.library import LibraryItemResponse
+from api.schemas.upload import ModerationInfo
+from api.services import cloudinary_service
 
 
 def get_library(

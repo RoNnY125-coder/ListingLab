@@ -14,8 +14,8 @@ from typing import List, Optional
 
 from fastapi import APIRouter, Query
 
-from app.schemas.library import LibraryItemResponse
-from app.services import library_service
+from api.schemas.library import LibraryItemResponse
+from api.services import library_service
 
 router = APIRouter(tags=["library"])
 

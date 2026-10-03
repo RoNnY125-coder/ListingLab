@@ -10,9 +10,9 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Query
 
-from app.exceptions.errors import InvalidFileException
-from app.schemas.process import ProcessResponse
-from app.services import image_processing
+from api.exceptions.errors import InvalidFileException
+from api.schemas.process import ProcessResponse
+from api.services import image_processing
 
 router = APIRouter(tags=["process"])
 

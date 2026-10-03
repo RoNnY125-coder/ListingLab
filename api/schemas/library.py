@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import List, Optional
 from pydantic import BaseModel
 
-from app.schemas.upload import ModerationInfo
+from api.schemas.upload import ModerationInfo
 
 
 class LibraryItemResponse(BaseModel):

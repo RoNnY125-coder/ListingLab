@@ -7,16 +7,16 @@ FastAPI application entry point.
 - Registers global exception handlers.
 - Overrides Swagger UI to use jsDelivr CDN (avoids unpkg.com blocks).
 """
-import app.cloudinary_client  # noqa: F401 — triggers SDK init before any router runs
+import api.cloudinary_client  # noqa: F401 — triggers SDK init before any router runs
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.docs import get_swagger_ui_html, get_redoc_html
 from fastapi.responses import HTMLResponse, RedirectResponse
 
-from app.config import settings
-from app.exceptions.handlers import register_exception_handlers
-from app.routers import upload, process, library, stats, dashboard
+from api.config import settings
+from api.exceptions.handlers import register_exception_handlers
+from api.routers import upload, process, library, stats, dashboard
 
 # Disable built-in docs so we can serve from a reliable CDN
 app = FastAPI(

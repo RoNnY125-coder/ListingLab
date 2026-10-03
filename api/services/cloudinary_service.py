@@ -20,7 +20,7 @@ import cloudinary.api
 import cloudinary.utils
 from cloudinary.search import Search
 
-from app.exceptions.errors import (
+from api.exceptions.errors import (
     AssetNotFoundException,
     CloudinaryUnavailableException,
     UploadFailedException,

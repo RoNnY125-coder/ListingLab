@@ -6,7 +6,7 @@ Import `cloudinary` from here (or directly from the sdk) after this module
 has been imported in main.py so the global config is already applied.
 """
 import cloudinary
-from app.config import settings
+from api.config import settings
 
 cloudinary.config(
     cloud_name=settings.cloudinary_cloud_name,
